@@ -1,0 +1,1 @@
+function sendAffiliateClick(siteId, href){try{if(window.gtag) gtag('event','click_affiliate',{site:siteId,url:href});}catch(e){console.log(e);}}
