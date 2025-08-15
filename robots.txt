@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gomessoaresemmanuel-cpu.github.io/minisites-seo/sitemap.xml
