@@ -1,0 +1,50 @@
+{
+  "modules": [
+    {
+      "name": "HTTP Watch",
+      "schedule": "0 9 * * *",
+      "parameters": {}
+    },
+    {
+      "name": "AI Generator",
+      "parameters": {
+        "prompt": "Cr\u00e9e un article SEO en fran\u00e7ais de 700 \u00e0 900 mots avec des sections, un tableau Top 3 et une FAQ."
+      }
+    },
+    {
+      "name": "GitHub Commit",
+      "parameters": {
+        "repo": "minisites-seo",
+        "path": "articles/"
+      }
+    },
+    {
+      "name": "Search Console",
+      "parameters": {}
+    },
+    {
+      "name": "Notification",
+      "parameters": {
+        "type": "email"
+      }
+    }
+  ],
+  "flow": [
+    {
+      "from": "HTTP Watch",
+      "to": "AI Generator"
+    },
+    {
+      "from": "AI Generator",
+      "to": "GitHub Commit"
+    },
+    {
+      "from": "GitHub Commit",
+      "to": "Search Console"
+    },
+    {
+      "from": "Search Console",
+      "to": "Notification"
+    }
+  ]
+}

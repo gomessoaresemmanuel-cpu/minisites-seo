@@ -1,0 +1,53 @@
+{
+  "name": "Daily Article Generator",
+  "nodes": [
+    {
+      "type": "cron",
+      "name": "Schedule",
+      "params": {
+        "cronExpression": "0 9 * * *"
+      }
+    },
+    {
+      "type": "ai-generator",
+      "name": "Generate Article",
+      "params": {
+        "prompt": "Cr\u00e9e un article SEO en fran\u00e7ais de 700 \u00e0 900 mots avec des sections, un tableau Top 3 et une FAQ."
+      }
+    },
+    {
+      "type": "github-commit",
+      "name": "Commit Article",
+      "params": {
+        "repo": "minisites-seo",
+        "path": "articles/"
+      }
+    },
+    {
+      "type": "search-console",
+      "name": "Ping Indexation",
+      "params": {}
+    },
+    {
+      "type": "notification",
+      "name": "Send Notification",
+      "params": {
+        "channel": "email"
+      }
+    }
+  ],
+  "connections": {
+    "Schedule": {
+      "Generate Article": []
+    },
+    "Generate Article": {
+      "Commit Article": []
+    },
+    "Commit Article": {
+      "Ping Indexation": []
+    },
+    "Ping Indexation": {
+      "Send Notification": []
+    }
+  }
+}
